@@ -1,0 +1,43 @@
+<!-- START FILTER -->
+<div class="row mt-2 ms-2">
+  <div class="col-auto me-1" style="width: 200px;">
+    <select class="form-select form-control-sm" [(ngModel)]="building.Building">
+        <option [value]="" selected> Select Building </option>
+  
+        <option *ngFor="let item of building.BuildingDropdownList;" [value]="item?.id"> {{item?.name}} 
+        </option>
+    </select>
+  </div>
+  <div class="col-auto me-1"  style="width: 200px;">
+    <select class="form-select form-control-sm" [(ngModel)]="building.Object" >
+        <option [value]="0" selected> Select Object </option>
+  
+        <option *ngFor="let item of building.ObjectDropdownList;" [value]="item?.id"> {{item?.name}} 
+    </select>
+  </div>
+  <div class="col-auto me-1"  style="width: 200px;">
+    <select class="form-select form-control-sm" [(ngModel)]="building.DataField">
+        <option [value]="0" selected> Select DataField </option>
+  
+        <option *ngFor="let item of building.DatafieldDropdownList;" [value]="item?.id"> {{item?.name}} 
+        </option>
+    </select>
+  </div>
+  <input class="me-1" style="width: 250px ;" type="datetime-local"  data-date-format="DD-MM-YYYY" [attr.data-date]="building.FromDate" [(ngModel)]="building.FromDate" >
+  
+  <input class="me-1" style="width: 250px;" type="datetime-local" data-date-format="DD-MM-YYYY" [attr.data-date]="building.ToDate" [(ngModel)]="building.ToDate" >
+
+  
+  <div class="col-auto me-1">
+    <button class="btn btn-primary" (click)="loadChart()"> Load</button>
+  </div>
+  
+</div>
+<!-- END FILTER -->
+
+
+<!-- CANVAS -->
+<div id="chart-container" style="position: relative; height:50vh; width:90vw">    
+  <canvas id="myChart">{{ Linechart }}</canvas>    
+</div>  
+ 
